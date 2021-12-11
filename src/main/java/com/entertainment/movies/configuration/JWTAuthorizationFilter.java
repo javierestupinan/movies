@@ -76,16 +76,16 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		return true;
 	}
 	
-	public static String obtenerUsuario(String token) {
+	public static String getUser(String token) {
 		String jwtToken = token.replace(JwtVariables.BEARER, "");
 		Claims claims = Jwts.parser().setSigningKey(JwtVariables.KEY.getBytes()).parseClaimsJws(jwtToken).getBody();
 		return claims.getSubject();
 	}
 	
-	public static String obtenerNitIntermediario(String token) {
+	public static String getRolId(String token) {
 		String jwtToken = token.replace(JwtVariables.BEARER, "");
 		Claims claims = Jwts.parser().setSigningKey(JwtVariables.KEY.getBytes()).parseClaimsJws(jwtToken).getBody();
-		return claims.get(JwtVariables.EMAIL, String.class);
+		return claims.get(JwtVariables.ROL_ID, String.class);
 	}
 
 }

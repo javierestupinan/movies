@@ -1,27 +1,24 @@
 package com.entertainment.movies.model.enums;
 
-import java.util.List;
-import java.util.Arrays;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
 public enum ERol {
-	USER(Arrays.asList("2"), "USER"),
-	ADMIN(Arrays.asList("1"), "ADMIN");
+	BASIC_USER(2, "BASIC_USER"),
+	ADMIN(1, "ADMINISTRATOR");
 	
-	private List<String> idRol;
+	private Integer idRol;
 	private String rol;
 
-	public static String getRolName(String codOsiris){
+	public static String getRolName(Integer codRol){
 	    for(ERol valor : values()){
-	        if( valor.getIdRol().contains(codOsiris)){
+	        if( valor.getIdRol().equals(codRol)){
 	            return valor.getRol();
 	        }
 	    }
-	    return ERol.USER.getRol();
+	    return ERol.BASIC_USER.getRol();
 	}
 
 }
