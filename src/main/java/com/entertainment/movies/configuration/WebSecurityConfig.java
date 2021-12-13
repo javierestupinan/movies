@@ -23,13 +23,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 		.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 		.authorizeRequests()
-		.antMatchers("/**").permitAll();
-		/*.antMatchers("/swagger-ui.html","/v2/api-docs","/webjars/**","/swagger-resources/**").permitAll()
+		//.antMatchers("/**").permitAll();
+		.antMatchers("/swagger-ui.html","/v2/api-docs","/webjars/**","/swagger-resources/**").permitAll()
 		.antMatchers("/security/log-in/**").permitAll()
 		.antMatchers("/movies/**").hasAnyAuthority(
-				ERol.USER.getRol(),
+				ERol.BASIC_USER.getRol(),
 				ERol.ADMIN.getRol())
-		.anyRequest().authenticated();*/
+		.anyRequest().authenticated();
 		http.cors(); 
 	}
 

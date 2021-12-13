@@ -31,7 +31,7 @@ public class Movie {
 	@Column(name = "movie_id")
 	private Integer movieId;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 

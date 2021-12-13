@@ -58,7 +58,7 @@ class UserServiceImpl implements IUserService {
 
 		final GeneralResponse loginValidation = validateUserSignIn(localUser, localPassword);
 		if (loginValidation.getStatus().equals(HttpStatus.OK) && userFound != null) {
-			response.setToken(UtilValidation.generateJWT(user, userFound, sessionMinutes));
+			response.setToken(UtilValidation.generateJWT(userFound.getUserId().toString(), userFound, sessionMinutes));
 		}
 		response.setResponse(loginValidation);
 		return response;
